@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="jBPM3">
+
+
+	<description>
+		Example jBPM3 Process Definition
+	</description>
+
+
+	<start-state name="start-state">
+		<transition to="test-data"></transition>
+	</start-state>
+
+
+	<mail-node name="approval-mail-node" to="noname@redhat.com">
+		<subject>
+			jBPM3 Email Results
+		</subject>
+		<text>
+			Dear #{user}
+Your Request was approved because the amount you supplied ($#{amount}) met the threshold amount.
+
+Thanks,
+		</text>
+		<transition to="approval-print"></transition>
+	</mail-node>
+
+	<decision name="decision">
+		<handler class="com.redhat.training.jbpm.handlers.AmountDecisionHandler"></handler>
+		<transition to="approval-mail-node" name="to-approval"></transition>
+		<transition to="denial-mail-node" name="to-denial"></transition>
+	</decision>
+
+	<mail-node name="denial-mail-node" to="noname@redhat.com">
+		<subject>
+			jBPM3 Email Results
+		</subject>
+		<text>
+			Dear #{user}
+Your Request was denied because the amount you supplied ($#{amount}) was less than the threshold amount.
+
+Thanks,
+		</text>
+		<transition to="denial-print"></transition>
+	</mail-node>
+
+	<node name="approval-print">
+		<action class="com.redhat.training.jbpm.handlers.PrintResultActionHandler"></action>
+		<transition to="end-state-approval"></transition>
+	</node>
+
+	<node name="denial-print">
+		<action class="com.redhat.training.jbpm.handlers.PrintResultActionHandler"></action>
+		<transition to="end-state-denial"></transition>
+	</node>
+
+	<node name="test-data">
+		<action class="com.redhat.training.jbpm.handlers.TestDataActionHandler"></action>
+		<transition to="decision"></transition>
+	</node>
+
+
+	<end-state name="end-state-approval"></end-state>
+
+	<end-state name="end-state-denial"></end-state>
+
+
+</process-definition>

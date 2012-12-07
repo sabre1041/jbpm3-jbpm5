@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jbpm-configuration>
+
+	<string name="resource.mail.templates" value="jbpm.mail.templates.xml" />
+	
+	<!-- Email Configuration -->
+	<string name="jbpm.mail.smtp.host" value="smtp.redhat.com" />
+	<string name="jbpm.mail.user" value="user" />
+	<string name="jbpm.mail.password" value="password" />
+	<int name="jbpm.mail.smtp.port" value="25" />
+
+	<!-- # For use with servers requiring start TLS such as gmail
+	<boolean name="jbpm.mail.smtp.starttls" value="true" />
+	
+	 -->
+	
+<!-- Could specify properties in a seperate file
+
+<string name='resource.mail.properties' value='jbpm.mail.properties' />
+
+-->	
+
+</jbpm-configuration>

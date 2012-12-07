@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="jBPM3" width="1016" height="491">
+  <node name="start-state" x="10" y="178" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="approval-mail-node" x="545" y="120" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="decision" x="317" y="180" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="-10" y="-21"/>
+    </edge>
+  </node>
+  <node name="denial-mail-node" x="545" y="216" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="approval-print" x="713" y="120" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="denial-print" x="713" y="216" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="test-data" x="161" y="181" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="end-state-approval" x="881" y="120" width="132" height="36"/>
+  <node name="end-state-denial" x="881" y="216" width="132" height="36"/>
+</root-container>

@@ -1,0 +1,129 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>jbpm3-jbpm5</artifactId>
+		<groupId>com.redhat.training.jbpm</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+
+	<artifactId>jbpm-jbpm3</artifactId>
+
+	<packaging>jboss-par</packaging>
+
+	<name>jBPM3 / jBPM5 Training - jBPM3</name>
+
+	<properties>
+
+		<jpdl.version>3.2.13</jpdl.version>
+		<jboss.packaging.maven.plugin.version>2.2</jboss.packaging.maven.plugin.version>
+		<maven.resources.plugin.version>2.6</maven.resources.plugin.version>
+		<slf4j.version>1.6.2</slf4j.version>
+		<dom4j.version>1.6.1</dom4j.version>
+		<commons.logging.version>1.1.1</commons.logging.version>
+		<commons.collections.version>3.2.1</commons.collections.version>
+
+	</properties>
+
+	<dependencies>
+
+		<!-- Provided -->
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-jpdl</artifactId>
+			<version>${jpdl.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>${dom4j.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>${commons.logging.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>${commons.collections.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+
+	</dependencies>
+
+	<build>
+		<testResources>
+			<testResource>
+				<directory>workflow-jbpm3</directory>
+			</testResource>
+			<testResource>
+				<directory>src/test/resources</directory>
+			</testResource>
+		</testResources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven.resources.plugin.version}</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/${project.build.finalName}</outputDirectory>
+							<resources>
+								<resource>
+									<directory>workflow-jbpm3</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jboss-packaging-maven-plugin</artifactId>
+				<version>${jboss.packaging.maven.plugin.version}</version>
+				<extensions>true</extensions>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<configuration>
+							<excludeAll>true</excludeAll>
+						</configuration>
+						<goals>
+							<goal>par</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+
+
+</project>
