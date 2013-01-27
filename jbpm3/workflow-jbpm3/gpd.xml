@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<root-container name="jBPM3" width="1016" height="491">
+<root-container name="jBPM3" width="1300" height="706">
   <node name="start-state" x="10" y="178" width="132" height="36">
     <edge>
       <label x="5" y="-10"/>

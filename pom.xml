@@ -18,6 +18,7 @@
 
 	<modules>
 		<module>jbpm3</module>
+		<module>jbpm5</module>
 	</modules>
 	
 	<developers>
